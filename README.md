@@ -1,5 +1,5 @@
 # Getting and Cleaning Data
-Shivam Patel
+
 
 ## Introduction
 
@@ -24,9 +24,9 @@ The script must be placed in the same directory as the unzipped content from the
 ## Code
 
 The following files are extracted from the test & train directories:
-        * "subject_test.txt"
-        * "X_test.txt"
-        * "y_test.txt"
+* "subject_test.txt"
+* "X_test.txt"
+* "y_test.txt"
         
 Data from these files are extracted and merged into the same data table. 
 

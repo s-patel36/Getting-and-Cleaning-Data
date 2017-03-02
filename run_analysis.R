@@ -19,13 +19,6 @@ yTrain <- activityLabels[yTrain, "activity"]
 
 ## extracts features
 features <- read.table("./UCI HAR Dataset/features.txt", col.names = c("featureid", "feature"))
-# appropriatly assigns features descriptive names
-features$feature <- gsub("^t", "time", features$feature)
-features$feature <- gsub("^f", "frequency", features$feature)
-features$feature <- gsub("Acc", "Accelerometer", features$feature)
-features$feature <- gsub("Gyro", "Gyroscope", features$feature)
-features$feature <- gsub("Mag", "Magnitude", features$feature)
-features$feature <- gsub("BodyBody", "Body", features$feature)
 # creates subset of x value with mean/standard deviation measurements
 wantedFeaturesLogical <- grepl("mean|std", features$feature)
 wantedFeatures <- subset(features$feature, wantedFeaturesLogical)
@@ -34,15 +27,15 @@ xTrain <- xTrain[, wantedFeaturesLogical]
 
 
 ## merges test and train data
-test <- cbind(subjectTest, xTest, yTest)
-train <- cbind(subjectTrain, xTrain, yTrain)
+test <- cbind(subjectTest, yTest, xTest)
+train <- cbind(subjectTrain, yTrain, xTrain)
 # assigns columns decriptive names 
-colnames(test) <- c("subject", as.character(wantedFeatures), "activity")
-colnames(train) <- c("subject", as.character(wantedFeatures), "activity")
+colnames(test) <- c("subject", "activity", as.character(wantedFeatures))
+colnames(train) <- c("subject", "activity", as.character(wantedFeatures))
 
 data <- rbind(test, train)
 
 
 ## groups by subject and activity and calculates the mean for all the other measurements 
 tidyData <- aggregate(. ~subject + activity, data, mean)
-write.table(tidyData, "tidy data.txt")
+write.table(tidyData, "tidy data.txt", row.names = FALSE)

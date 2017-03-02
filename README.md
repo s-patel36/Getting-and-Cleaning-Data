@@ -1,4 +1,5 @@
-### Getting and Cleaning Data Course Project
+# Getting and Cleaning Data
+Shivam Patel
 
 ## Introduction
 
@@ -23,10 +24,13 @@ The script must be placed in the same directory as the unzipped content from the
 ## Code
 
 The following files are extracted from the test & train directories:
-* "subject_test.txt"
-* "X_test.txt"
-* "y_test.txt"
-They are both merged into the same data table. The "features.txt" and the "activity_labels.txt" file contain the variable names for the x and y fields respectively. The x values are actually a table in itself containing values for different measurements seperated by columns. These were filtered out to only get the measurements that take the mean or standard deviation. 
+        * "subject_test.txt"
+        * "X_test.txt"
+        * "y_test.txt"
+        
+Data from these files are extracted and merged into the same data table. 
+
+The "features.txt" and the "activity_labels.txt" file contain the variable names for the x and y fields respectively. The x values are actually a table in itself containing values for different measurements seperated by columns. These were filtered out to only get the measurements that take the mean or standard deviation. 
 
 Finally, we group the data by subject and activity and get the means of the values for each measurement and write the output to a file, "tiny data.txt". 
 
